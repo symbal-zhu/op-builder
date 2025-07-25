@@ -1,12 +1,6 @@
 name: Build ImmortalWrt for MT798x
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       device:
@@ -44,7 +38,7 @@ jobs:
       - name: Copy configuration
         run: |
           cd immortalwrt-mt798x
-          cp -f defconfig/${{ github.event.inputs.device || 'mt7981-ax3000' }}.config .config
+          cp -f defconfig/${{ github.event.inputs.device }}.config .config
 
       - name: Configure build
         run: |
